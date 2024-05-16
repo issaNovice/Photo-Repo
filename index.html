@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="content">
+        <div class="boxes item1">
+            <img src="photos/1.jpeg" onclick="openModal('photos/1.jpeg')" loading="lazy">
+        </div>
+        <div class="boxes item2">
+            <img src="photos/2.jpg" onclick="openModal('photos/2.jpg')" loading="lazy">
+        </div>
+        <div class="boxes item3">
+            <img src="photos/3.jpeg" onclick="openModal('photos/3.jpeg')" loading="lazy">
+        </div>
+        <div class="boxes item4">
+            <img src="photos/4.jpg" onclick="openModal('photos/4.jpg')" loading="lazy">
+        </div>
+        <div class="boxes item5">
+            <img src="photos/5.jpg" onclick="openModal('photos/5.jpg')" loading="lazy">
+        </div>
+        <div class="boxes item6">
+            <img src="photos/6.jpg" onclick="openModal('photos/6.jpg')" loading="lazy">
+        </div>
+        <div class="boxes item7">
+            <img src="photos/7.jpg" onclick="openModal('photos/7.jpg')" loading="lazy">
+        </div>
+        <div class="boxes item8">
+            <img src="photos/8.jpg" onclick="openModal('photos/8.jpg')" loading="lazy">
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImg">
+        
+        <div class="nav-buttons">
+          <button onclick="prevImage()">&lt;</button>
+          <button onclick="nextImage()">&gt;</button>
+        </div>
+      </div>
+  
+      <script>
+      var images = [
+        "photos/1.jpeg",
+        "photos/2.jpg",
+        "photos/3.jpeg",
+        "photos/4.jpg",
+        "photos/5.jpg",
+        "photos/6.jpg",
+        "photos/7.jpg",
+        "photos/8.jpg",
+        
+      ];
+  
+      var currentImageIndex = 0;
+  
+      function openModal(src) {
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("modalImg");
+        modal.style.display = "block";
+        modalImg.src = src;
+        currentImageIndex = images.indexOf(src);
+      }
+  
+      function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+      }
+  
+      function prevImage() {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        var modalImg = document.getElementById("modalImg");
+        modalImg.src = images[currentImageIndex];
+      }
+  
+      function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        var modalImg = document.getElementById("modalImg");
+        modalImg.src = images[currentImageIndex];
+      }
+      </script>
+  </body>
+  </html>
+</body>
+</html>
